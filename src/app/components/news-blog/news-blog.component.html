@@ -1,0 +1,49 @@
+<div class="flex justify-center flex-col w-1/2 m-auto items-center">
+    <h1 class="underline">
+        <P>IKNEWS</P>
+    </h1>
+
+    <input type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="enter headline" #headline>
+    <input type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="enter post" #post>
+
+    <button (click)="onCreateBlog(headline.value , post.value)"
+        class="bg-slate-600 px-4  pr-4 rounded my-5 text-lg">Add</button>
+
+</div>
+
+<div class="w-1/2 m-auto" *ngFor="let item of blogs | async">
+    <div class="rounded ">
+        <div class="rounded shadow-lg">
+            <div class="px-6 py-4 ">
+                <p class=" text-center text-red-700 text-xl">
+                    {{item.headline | uppercase}}
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2 flex flex-col ">
+                {{ item.today | date: 'dd/MM/yyyy hh:mm a' }}
+
+                <div class="my-5 flex justify-center ">
+
+
+                    <P> {{item.post}}</P>
+
+
+                </div>
+
+                <button (click)="onDelete(item.id)" class="bg-red-600 rounded px-4 py-2 ">
+                    <p>DELETE</p>
+                </button>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
